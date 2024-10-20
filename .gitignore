@@ -22,6 +22,5 @@ test.todo
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.env
 .dockerignore
 Dockerfile
