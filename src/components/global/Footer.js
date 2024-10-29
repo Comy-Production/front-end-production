@@ -1,8 +1,7 @@
-import React from "react";
-import { LogOut } from "lucide-react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { logoutUser } from "../../api/auth";
-import "./styles/Footer.scss";
+import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { logoutUser } from '../../api/auth';
+import './styles/Footer.scss';
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -55,13 +54,12 @@ const Footer = () => {
           お問い合わせ
         </a>
         {!shouldHideLogout && (
-          <button
+          <div
             onClick={handleLogout}
             className="footer__logout"
           >
-            <LogOut />
-            <span>ログアウト</span>
-          </button>
+            <span className='footer__link'>ログアウト</span>
+          </div>
         )}
       </div>
       
