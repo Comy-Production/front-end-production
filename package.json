@@ -2,6 +2,9 @@
   "name": "business-matching-system",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "18.x.x"
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
     "@stripe/react-stripe-js": "^2.8.0",
