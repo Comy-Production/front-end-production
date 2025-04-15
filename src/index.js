@@ -3,6 +3,15 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+
+import TagManager from "react-gtm-module";
+
+const tagManagerArgs = {
+  gtmId: "GTM-P5MWTV3L",
+};
+
+TagManager.initialize(tagManagerArgs);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
 
