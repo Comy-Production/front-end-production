@@ -6,6 +6,10 @@
     "node": "18.x.x"
   },
   "dependencies": {
+    "@copilotkit/react-core": "^1.8.4",
+    "@copilotkit/react-textarea": "^1.8.4",
+    "@copilotkit/react-ui": "^1.8.4",
+    "@copilotkit/runtime": "^1.8.4",
     "@reduxjs/toolkit": "^2.2.7",
     "@stripe/react-stripe-js": "^2.8.0",
     "@stripe/stripe-js": "^4.4.0",
@@ -24,7 +28,8 @@
     "react-toastify": "^10.0.5",
     "serve": "^14.2.4",
     "swiper": "^11.1.14",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^1.4.0"
   },
   "scripts": {
     "start": "serve -s build -l $PORT",

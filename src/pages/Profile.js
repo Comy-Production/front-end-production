@@ -1,50 +1,65 @@
 import React, { useEffect, useState } from "react";
-
 import Header from "../components/global/Header";
 import Footer from "../components/global/Footer";
-import BusinessSheetTemplate from "../components/BusinessSheetTemplate";
+import BusinessSheetTemplate from "../components/business-sheet/BusinessSheetTemplate";
 import { SpinnerPage } from "../components/global/Spinner";
-
 import useLocalStorage from "../hooks/useLocalStorage";
-import { editBusinessSheet } from "../api/businessSheet";
+import { useBusinessSheetCopilotActions } from "../hooks/useBusinessSheetCopilotActions";
+import CopilotLayout from "../components/layout/CopilotLayout";
+import { createUpdateBusinessSheetData } from "../utils/businessSheetUtils";
+
+const BusinessSheetWithCopilot = ({
+  businessSheetData,
+  setBusinessSheetData,
+  updateBusinessSheetData,
+}) => {
+  // Use the copilot actions hook
+  useBusinessSheetCopilotActions({
+    businessSheetData,
+    updateBusinessSheetData,
+  });
+
+  return (
+    <BusinessSheetTemplate
+      data={businessSheetData}
+      setBusinessSheetData={setBusinessSheetData}
+      isEdit={true}
+      handleEdit={updateBusinessSheetData}
+    />
+  );
+};
 
 const Profile = () => {
   const [businessSheetData, setBusinessSheetData] = useState(null);
-  const { getValue, setValue, clearAll } = useLocalStorage();
+  const { getValue, setValue } = useLocalStorage();
 
   useEffect(() => {
     console.log("get sheet");
     setBusinessSheetData(getValue("businessSheetData"));
-  }, [getValue, setValue, clearAll]);
+  }, [getValue]);
 
-  const handleEdit = async (updatedData) => {
-    console.log("update");
-    await editBusinessSheet(updatedData);
-
-    const updatedBusinessSheetData = {
-      ...businessSheetData,
-      ...updatedData,
-    };
-
-    setValue("businessSheetData", updatedBusinessSheetData);
-    setBusinessSheetData(getValue("businessSheetData"));
-  };
+  const updateBusinessSheetData = createUpdateBusinessSheetData(
+    setBusinessSheetData,
+    setValue
+  );
 
   return (
-    <div>
+    <CopilotLayout 
+      businessSheetData={businessSheetData}
+      updateBusinessSheetData={updateBusinessSheetData}
+    >
       <Header />
       {businessSheetData ? (
-        <BusinessSheetTemplate
-          data={businessSheetData}
+        <BusinessSheetWithCopilot
+          businessSheetData={businessSheetData}
           setBusinessSheetData={setBusinessSheetData}
-          isEdit={true}
-          handleEdit={handleEdit}
+          updateBusinessSheetData={updateBusinessSheetData}
         />
       ) : (
         <SpinnerPage />
       )}
       <Footer />
-    </div>
+    </CopilotLayout>
   );
 };
 
