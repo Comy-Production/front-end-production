@@ -19,21 +19,26 @@ const MobileMenu = () => {
     },
     {
       id: "2",
-      to: "https://comy.jp/",
-      content: "LPページ",
+      to: "/chat",
+      content: "メッセージ",
     },
     {
       id: "3",
+      to: "https://www.facebook.com/groups/3773860399566242/",
+      content: "Facebook掲示板",
+    },
+    {
+      id: "4",
       to: "https://comy.jp/terms-of-service/",
       content: "利用規約",
     },
     {
-      id: "4",
+      id: "5",
       to: "https://comy.jp/privacy-policy/",
       content: "プライバシーポリシー",
     },
     {
-      id: "5",
+      id: "6",
       to: "https://comy.jp/contact/",
       content: "お問い合わせ",
     },
